@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;500;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    margin: 0px;
+}
+    
+*::before,*::after{
+    margin : 0;
+    padding : 0;
+    box-sizing : border-box;
+    outline : none ;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Oswald', sans-serif;
+    background-color: rgb(192, 144, 238);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+html {
+    scroll-behavior : smooth ;
+}
+
+img{
+    width : 100%;
+    height : auto;
+}
+
+a{
+    text-decoration;
+}
+
+.TaskName{
+    border: 0px;
+    border-bottom: 1px solid black;
+}
+
+.containers{
+    width: 80%;
+    max-width: 500px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: white;
+    padding: 25px;
+}
+
+.container1{
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+}
+
+.container2{
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    padding-bottom: 2rem;
+}
+
+.formClass{
+    width: 100%;
+    display: flex;
+}
+
+.TaskName{
+    padding-left: 1rem;
+    flex: 1;
+}
+
+.newElement{
+    width: 100%;
+    background-color: rgb(231, 222, 240);
+    border-radius: 1rem;
+    padding: 0.6rem 1rem 1rem;
+}
+
+.btn1{
+    min-width: 1.5rem;
+    border-radius: 5px;
+    color: wheat;
+    background-color: rgb(132, 132, 236);
+    margin: 0px 15px 0px 0px;
+}
+
+.btn1:hover{
+    background-color: blue;
+}
