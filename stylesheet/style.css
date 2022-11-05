@@ -14,6 +14,10 @@
     outline : none ;
 }
 
+:root{
+    --light-blue : rgb(132, 132, 236);
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -64,11 +68,13 @@ a{
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
     padding-bottom: 2rem;
+    min-height: 60vh;
 }
 
 .formClass{
     width: 100%;
     display: flex;
+    padding-top: 1rem;
 }
 
 .TaskName{
@@ -87,7 +93,7 @@ a{
     min-width: 1.5rem;
     border-radius: 5px;
     color: wheat;
-    background-color: rgb(132, 132, 236);
+    background-color: var(--light-blue);
     margin: 0px 15px 0px 0px;
 }
 

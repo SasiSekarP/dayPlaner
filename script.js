@@ -5,11 +5,11 @@
 let TaskNameEl = document.getElementById('TaskName')
 let formClassEl = document.getElementById('formClass')
 let myTasksEl = document.getElementById('myTasks')
+let btnEl = document.getElementById('btn')
 
 // Global variable
 
 let dataObject = gettingDataFunction()
-console.log(dataObject)
 
 if (!dataObject) {
     dataObject = []
@@ -17,19 +17,12 @@ if (!dataObject) {
     displayFuntion(dataObject)
 }
 
-// function
+let editID = 0;
 
-function editItem(id) {
-    alert(`you edit element of ${id}`)
-}
+// function
 
 function addDataInLocalStorage(dataItem) {
     localStorage.setItem('dataObject', JSON.stringify(dataItem))
-}
-
-function deleteItem(id) {
-    dataObject = dataObject.filter((element) => element.id != id)
-    displayFuntion(dataObject)
 }
 
 function gettingDataFunction() {
@@ -50,6 +43,20 @@ function displayFuntion(StoredData) {
     })
 }
 
+function deleteItem(id) {
+    dataObject = dataObject.filter((element) => element.id != id)
+    displayFuntion(dataObject)
+    addDataInLocalStorage(dataObject)
+}
+
+function editItem(id) {
+    let elementToBeEdit = document.getElementById(id);
+    let elementToBeEditValue = elementToBeEdit.innerText;
+    TaskNameEl.value = elementToBeEditValue;
+    btnEl.value = 'edit';
+    editID = id;
+}
+
 // event listener
 
 formClassEl.addEventListener('submit', (e) => {
@@ -57,15 +64,27 @@ formClassEl.addEventListener('submit', (e) => {
     let TaskNameValue = TaskNameEl.value;
     if (TaskNameValue) {
         TaskNameEl.value = ''
-        let a = { 'id': new Date().valueOf(), 'task': TaskNameValue }
-        dataObject.push(a);
+        let btnValue = btnEl.value;
+        if (btnValue === 'add') {
+            let a = { 'id': new Date().valueOf(), 'task': TaskNameValue }
 
-        // adding data to local storage
-        addDataInLocalStorage(dataObject)
+            dataObject.push(a);
 
-        // adding data in Display
+            // adding data to local storage
+            addDataInLocalStorage(dataObject)
 
-        displayFuntion(dataObject);
+            // adding data in Display
+            displayFuntion(dataObject);
+
+        } else if (btnValue === 'edit') {
+            dataObject.forEach(a => {
+                if (a.id === editID) {
+                    a.task = TaskNameValue;
+                }
+            })
+            displayFuntion(dataObject);
+            btnEl.value = 'add';
+        }
     }
     else {
         alert('Enter valid information to creat new task');
